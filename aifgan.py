@@ -85,7 +85,7 @@ def generator_loss(fake_output):
 	return ce(tf.ones_like(fake_output), fake_output)
 
 lr = 0.5e-4  		# learning rate
-num_epochs = 50
+num_epochs = 5000
 batch_size = 1
 noise_len = 100		# length of noise seed for generator
 num_gens = 16
@@ -128,6 +128,7 @@ def train(data, epochs):
 		gen = G(seed, training=False)
 		update_plot(gen[0, :, 0])
 
+# Set up a plot of a generated sample that updates while training
 fig, ax = plt.subplots(1, 1)
 rdata = np.random.normal(size=max_len)  # some random data for initializing the plot
 pls = ax.plot(audio_data[5], color='red')
