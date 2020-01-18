@@ -11,8 +11,8 @@ def load_aif(fpath, downsample_by=1):
 	# and mix them together
 	mono_mix = np.sum(audio_arr, axis=-1)
 	# normalize to [0., 1.]
-	mono_mix -= np.min(mono_mix)
-	mono_mix /= np.max(mono_mix)
+	# mono_mix -= np.min(mono_mix)
+	mono_mix /= np.max(np.abs(mono_mix))
 	mono_mix = mono_mix[::downsample_by]  # downsampling
 
 	return mono_mix
